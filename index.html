@@ -1399,6 +1399,350 @@
         display: none;
       }
     }
+
+    /* Mobile: full responsive pass for phones */
+    @media (max-width: 700px) {
+      html, body {
+        scroll-snap-type: none;
+        overflow-x: hidden;
+        height: auto;
+      }
+
+      body {
+        overflow-y: auto;
+      }
+
+      .slide {
+        scroll-snap-align: none;
+        scroll-snap-stop: normal;
+        height: auto;
+        min-height: 100vh;
+        max-height: none;
+        padding: 5vh 5vw 10vh;
+        justify-content: flex-start;
+      }
+
+      .slide.title,
+      .slide.thanks,
+      .slide.section-divider {
+        min-height: 100vh;
+        justify-content: center;
+      }
+
+      .slide-footer {
+        position: absolute;
+      }
+
+      /* Stack reverse-variants on mobile (higher specificity overrides) */
+      .slide.code-split,
+      .slide.code-split.code-split-reverse,
+      .slide.meme-split,
+      .slide.meme-split.meme-split-reverse {
+        flex-direction: column;
+      }
+
+      .slide.code-split .code-text,
+      .slide.code-split pre.code,
+      .slide.meme-split .meme-text,
+      .slide.meme-split .meme-img {
+        flex: none;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      /* Long URLs break at hyphens, not mid-word */
+      .tool-url,
+      .tool-card .url,
+      a {
+        word-break: normal;
+        overflow-wrap: break-word;
+      }
+
+      .slide h1 {
+        font-size: clamp(2rem, 8vw, 2.85rem);
+      }
+
+      .slide h2 {
+        font-size: clamp(1.5rem, 6.5vw, 2.2rem);
+        line-height: 1.05;
+      }
+
+      .slide h2.big {
+        font-size: clamp(1.75rem, 7vw, 2.5rem);
+      }
+
+      .slide p,
+      .slide .lede,
+      .slide ul.lead {
+        font-size: clamp(0.95rem, 3.8vw, 1.1rem);
+        line-height: 1.4;
+      }
+
+      .slide .lede {
+        font-size: clamp(1.05rem, 4.4vw, 1.3rem);
+      }
+
+      .kicker {
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        margin: 0 0 1rem;
+      }
+
+      .step-badge {
+        font-size: 0.65rem;
+        padding: 0.18rem 0.55rem;
+        margin-bottom: 0.85rem;
+      }
+
+      .punchline {
+        font-size: clamp(1.15rem, 5vw, 1.6rem);
+      }
+
+      .byline {
+        font-size: 1rem;
+        margin-top: 1.25rem;
+      }
+
+      .slide-footer {
+        bottom: 1.1rem;
+        left: 5vw;
+        gap: 0.55rem;
+      }
+
+      .slide-footer img {
+        height: 20px;
+      }
+
+      .slide-footer .drevops-logo {
+        width: 70px;
+        height: 18px;
+      }
+
+      .slide-footer .sep {
+        height: 14px;
+      }
+
+      .slide-number {
+        font-size: 0.62rem;
+        padding: 0.18rem 0.45rem;
+        bottom: 0.55rem;
+        right: 0.7rem;
+      }
+
+      /* Title slide: stack vertically, hide decorative image panel */
+      .slide.title {
+        flex-direction: column;
+      }
+
+      .title-left {
+        flex: 1 1 auto;
+        padding: 7vh 6vw;
+      }
+
+      .title-left h1 {
+        max-width: none;
+      }
+
+      .title-right {
+        display: none;
+      }
+
+      .event-logo {
+        height: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .speaker-logo {
+        bottom: 3vh;
+        left: 6vw;
+        height: 1.5rem;
+      }
+
+      .slide.section-divider h1 {
+        font-size: clamp(2.5rem, 13vw, 4.5rem);
+      }
+
+      /* Timeline: wrap into a 2-column grid, drop the connecting track */
+      .timeline-slide {
+        padding-top: 4vh;
+      }
+
+      .timeline {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.1rem 0.75rem;
+        margin-top: 1rem;
+        min-height: auto;
+      }
+
+      .timeline-track {
+        display: none;
+      }
+
+      .timeline-point {
+        padding: 2.25rem 0.25rem 0;
+      }
+
+      .timeline-point::before {
+        top: 1rem;
+        width: 1.2rem;
+        height: 1.2rem;
+        border-width: 3px;
+      }
+
+      .timeline-point:last-child::before {
+        width: 1.35rem;
+        height: 1.35rem;
+      }
+
+      .timeline-point .year {
+        font-size: 1.1rem;
+        margin-top: 0.4rem;
+      }
+
+      .timeline-point .label {
+        font-size: 0.78rem;
+      }
+
+      /* Code, terminal, and diff blocks: smaller text, allow horizontal scroll */
+      pre.code,
+      pre.terminal,
+      pre.diff {
+        font-size: 0.7rem;
+        line-height: 1.55;
+        padding: 0.8rem 0.95rem;
+        max-width: 100%;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Code-split: already column at 900px - make code area scrollable */
+      .slide.code-split,
+      .slide.meme-split {
+        padding: 4vh 5vw 9vh;
+        gap: 1rem;
+      }
+
+      .slide.code-split pre.code {
+        max-height: 50vh;
+      }
+
+      .slide.meme-split .meme-img {
+        max-height: 38vh;
+      }
+
+      /* Tool grid: single column on phones */
+      .tool-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .tool-card {
+        padding: 0.9rem 1rem;
+      }
+
+      .tool-card h3 {
+        font-size: 0.95rem;
+      }
+
+      .tool-card p {
+        font-size: 0.95rem;
+      }
+
+      .tool-url {
+        font-size: clamp(1rem, 4.5vw, 1.4rem);
+        margin-top: 1rem;
+      }
+
+      /* Workflow-list-wide: 2 columns (already in 700px rule); shrink padding */
+      .workflow-list-wide {
+        gap: 0.5rem;
+        margin: 1.25rem 0 0.75rem;
+      }
+
+      .workflow-list-wide li {
+        padding: 0.75rem 0.4rem 0.65rem;
+        font-size: 0.85rem;
+      }
+
+      .workflow-list-wide li::before {
+        font-size: 0.65rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .workflow-col {
+        padding: 1.1rem 1.2rem;
+      }
+
+      .workflow-list li {
+        padding: 0.3rem 0 0.3rem 2.2rem;
+        font-size: 0.95rem;
+      }
+
+      /* Stat grid: single column with tighter cards */
+      .stat-card {
+        padding: 0.95rem 1.1rem;
+      }
+
+      .stat-number {
+        font-size: clamp(2rem, 9vw, 2.85rem);
+      }
+
+      .stat-label {
+        font-size: 0.95rem;
+      }
+
+      /* Comparison rows: narrower name column */
+      .comparison-row {
+        grid-template-columns: 5.5rem 1fr 2.75rem;
+        gap: 0.6rem;
+        font-size: 0.9rem;
+      }
+
+      .comparison-row .bar {
+        height: 1.4rem;
+      }
+
+      /* Feature flow: stack stage/tool/desc */
+      ol.feature-flow li {
+        font-size: 0.9rem;
+        gap: 0.4rem 1rem;
+      }
+
+      /* PR mockup: shrink */
+      .pr-mockup {
+        font-size: 0.85rem;
+      }
+
+      .pr-header,
+      .pr-title,
+      .pr-body,
+      .pr-comment {
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
+      }
+
+      /* Workflow steps tighter */
+      ol.workflow-steps li {
+        padding-left: 2.2rem;
+        font-size: 0.95rem;
+      }
+
+      /* Meta badge smaller */
+      .meta-badge {
+        font-size: 0.7rem;
+        padding: 0.22rem 0.6rem;
+      }
+
+      /* Thanks slide */
+      .slide.thanks h1.huge {
+        font-size: clamp(3.5rem, 18vw, 6rem);
+      }
+
+      .slide.thanks .lede {
+        font-size: clamp(1rem, 4.2vw, 1.25rem);
+      }
+    }
   </style>
 </head>
 <body>
